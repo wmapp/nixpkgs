@@ -1,14 +1,15 @@
-{stdenv, fetchurl, libX11, libXrandr}:
+{stdenv, fetchgit, libX11, libXrandr}:
 stdenv.mkDerivation rec {
   name = "sct";
   buildInputs = [libX11 libXrandr];
-  src = fetchurl {
-    url = http://www.tedunangst.com/flak/files/sct.c;
-    sha256 = "1bivy0sl5v1jsq4jbq6p9hplz6cvw4nx9rc96p2kxsg506rqllc5";
+  src = fetchgit {
+    url = git://github.com/wmapp/sct.git;
+    rev = "be00d189f491b9100233b3a623b026bbffccb18e";
+    sha256 = "1fd2hdc1fklzspd9x2lm1hznlvqssiha8ckcr1zgmzq04rkwbl5r";
   };
   phases = ["patchPhase" "buildPhase" "installPhase"];
   patchPhase = ''
-    sed -re "/Xlibint/d" ${src} > sct.c 
+    sed -re "/Xlibint/d" ${src}/sct.c > sct.c 
   '';
   buildPhase = "gcc -std=c99 sct.c -o sct -lX11 -lXrandr -lm";
   installPhase = ''
