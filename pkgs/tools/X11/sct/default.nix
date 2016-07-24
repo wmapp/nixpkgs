@@ -21,5 +21,6 @@ stdenv.mkDerivation rec {
     maintainers = [stdenv.lib.maintainers.raskin];
     platforms = with stdenv.lib.platforms; linux ++ freebsd ++ openbsd;
     homepage = http://www.tedunangst.com/flak/post/sct-set-color-temperature;
+    license = stdenv.lib.licenses.unlicense;
   };
 }
