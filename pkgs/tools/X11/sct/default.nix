@@ -20,6 +20,6 @@ stdenv.mkDerivation rec {
     description = ''A minimal utility to set display colour temperature'';
     maintainers = [stdenv.lib.maintainers.raskin];
     platforms = with stdenv.lib.platforms; linux ++ freebsd ++ openbsd;
-    homepage = "http://www.tedunangst.com/flak/post/sct-set-color-temperature";
+    homepage = http://www.tedunangst.com/flak/post/sct-set-color-temperature;
   };
 }
